@@ -1,0 +1,360 @@
+body{
+    max-height: 100vh;
+    overflow-y: none;
+}
+
+#btn-top {
+    text-decoration: none;
+    padding: 10px;
+    font-family: sans-serif;
+    background: #000;
+    border-radius: 100px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#btn-top:hover {
+    opacity: 1;
+}
+
+.search-button {
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+    height: 40px;
+    margin-left: -40px;
+    position: relative;
+    width: 40px;
+}
+
+.search-button i {
+    color: #333;
+    font-size: 18px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-small {
+    width: 12rem;
+    margin: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    text-align: center;
+}
+
+.card-small img {
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+}
+
+.card-small h5 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.card-small p {
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+}
+
+.card-small a {
+    display: inline-block;
+    margin: 0.5rem;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.card-small a:hover {
+    background-color: #0069d9;
+}
+
+.card {
+    height: 450px; /* Establece una altura fija para todas las tarjetas */
+    max-height: 100vh;
+}
+
+.card img {
+    height: 270px; /* Establece una altura fija para las imágenes dentro de las tarjetas */
+    object-fit: cover; /* Ajusta las imágenes al tamaño de la tarjeta */
+}
+.container-fluid.modal-body img {
+    max-width: 200px;
+    max-height: 100vh;
+
+}
+
+.modal-cuerpo{
+    padding-left: 50px;
+}
+
+.mx-auto{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    --bs-gutter-x: 0;
+}
+
+.col{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-cuerpo {
+    overflow: auto;
+    text-align: start;
+    max-height: 400px; /* establece la altura máxima del div */
+    }
+
+.button-27 {
+    width: 300px;
+    height: 100px;
+    font-size: 16px;
+    overflow: hidden;
+    padding: 0.5rem 1rem; /* ajusta el padding vertical y horizontal */
+    min-width: 7rem; /* establece un ancho mínimo para evitar que se ajusten demasiado en dispositivos pequeños */
+    margin: 0.5rem; /* establece un margen para separar los botones */
+    box-sizing: border-box; /* asegura que el padding y el borde se incluyan en el ancho y la altura del botón */
+}
+
+.button-27:disabled {
+    pointer-events: none;
+    }
+
+.button-27:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+.button-27:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+button.btn-close{
+    background-color: #ffffff;
+}
+
+[data-bs-theme=dark] .btn-close {
+    filter: var(--bs-btn-close-white-filter);
+}
+
+.searchInput{
+    width: 80%;
+    height: 45px;
+    color: black;
+    border-radius: 10px 10px 10px 10px;
+    border-color: gray;
+}
+
+a.nav-link.active{
+    font-weight: bolder;
+}
+
+a.nav-link.active:hover{
+    box-shadow: rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+    color: #686868;
+}
+
+.container-fluid.modal-body{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-cuerpo {
+    margin: 20px;
+    font-size: medium;
+    font-family: "Gill Sans", sans-serif;
+}
+.img {
+    margin: 20px;
+    margin-top: 0;
+}
+
+.buttons-1 {
+    display: flex; 
+    flex-direction: row; 
+    text-align: center; 
+    align-items: center;
+    justify-content: center;
+}
+
+button.searchButton{
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+    height: 54px;
+    position: relative;
+    margin-left: -5%;
+    width: 60px;
+}
+
+button.search-button i{
+    color: #ffffff;
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.search-button{
+    height: 70px;
+    width: 70px;
+    background-color: #212529;
+    margin-left: 10px;
+    margin-top: 12px;
+}
+
+button.searchButton:disabled {
+    pointer-events: none;
+    }
+
+    button.searchButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    color: #37383d;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 0 solid #f0f1b8;
+    transform: translateY(-2px);
+}
+
+button.searchButton:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+.arrowRight{
+    justify-content: center;
+}
+
+.arrowRight img{
+    width: 26px;
+    height: 26px;
+}
+
+.to-top {
+    background: white;
+    position: fixed;
+    bottom: 16px;
+    right:32px;
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size:32px;
+    color:#1f1f1f;
+    text-decoration: none;
+    opacity:0;
+    pointer-events: none;
+    transition: all .4s;
+}
+
+.to-top.active {
+    bottom:32px;
+    pointer-events: auto;
+    opacity:1;
+}
+
+.b-example-divider {
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+@media (min-width: 1000px) {
+    .button-27 {
+        width: 600px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 991px){
+    
+    .container-fluid.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    }
+}
+
+@media (max-width: 660px) {
+
+    .container-fluid.modal-body{
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .searchInput{
+        width: 50%;
+    }
+
+    /* .modal-cuerpo{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding-left: 30px;
+    } */
+
+    .mb-3 {
+        margin-bottom: 0!important;
+    }
+
+    .col{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .button-27 {
+        font-size: 16px;
+        overflow: hidden;
+        padding: 0.5rem 1rem; /* ajusta el padding vertical y horizontal */
+        min-width: 7rem; /* establece un ancho mínimo para evitar que se ajusten demasiado en dispositivos pequeños */
+        margin: 0.5rem; /* establece un margen para separar los botones */
+        box-sizing: border-box; /* asegura que el padding y el borde se incluyan en el ancho y la altura del botón */
+    }
+
+    .buttons-1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+}

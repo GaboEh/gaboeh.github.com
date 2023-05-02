@@ -1,0 +1,149 @@
+
+<section>
+    
+    <div class="b-example-divider"></div>
+        <div class="offcanvas offcanvas-start offcanvasDarkNavbarLabel text-bg-dark" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="staticBackdropLabel" style="font-weight: bolder; color:white">Buscador</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+        
+                        <div class="searchBox">
+                            
+                            <input class="form-control me-sm-2" class="searchInput"type="text" name="" placeholder="Buscar por titulo, autor o tema-materia"  [(ngModel)]="filtroTitulo">
+                            <button class="btn-close" data-bs-dismiss="offcanvas" class="searchButton" href="#" (click)="buscarLibros()">
+                                <i class="fa fa-search fa-regular fa-magnifying-glass"></i>
+                            </button>
+                        </div>
+            <div>
+                <br>
+                    <h5 class="offcanvas-title" id="staticBackdropLabel" style="font-weight: bolder; color:white">Aplicaciones Pedagogicas</h5>
+                    <br>
+                    <div class="col-lg-6 mx-auto">
+                            <p><a class="btn-close" data-bs-dismiss="offcanvas" class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"role="button"  (click)="mostrarLibrosPorId(1)">Lenguaje</a></p>
+                            <p><a class="btn-close" data-bs-dismiss="offcanvas" class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"role="button"  (click)="mostrarLibrosPorId(2)">Matemáticas</a></p>
+                            <p><a class="btn-close" data-bs-dismiss="offcanvas" class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"role="button"  (click)="mostrarLibrosPorId(3)">Física</a></p>
+                            <p><a class="btn-close" data-bs-dismiss="offcanvas" class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"role="button"  (click)="mostrarLibrosPorId(5)">Biologias y ciencias</a></p>
+                            <p><a class="btn-close" data-bs-dismiss="offcanvas" class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"role="button"  (click)="mostrarLibrosPorId(6)">Música</a></p>
+                            <p><a class="btn-close" data-bs-dismiss="offcanvas" class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"role="button"  (click)="mostrarLibrosPorId(4)">Quimica</a></p>
+                            <p><a class="btn-close" data-bs-dismiss="offcanvas" class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"role="button"  (click)="mostrarLibrosPorId(7)">Arte</a></p>
+                            <p><a class="btn-close" data-bs-dismiss="offcanvas" class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"role="button"  (click)="mostrarLibrosPorId(8)">Tecnología</a></p>
+                            <p><a class="btn-close" data-bs-dismiss="offcanvas" class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"role="button"  (click)="mostrarLibrosPorId(9)">Religion</a></p>
+                            <p><a class="btn-close" data-bs-dismiss="offcanvas" class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"role="button"  (click)="mostrarLibrosPorId(10)">Historia y cs. sociales</a></p>
+                            <p><a class="btn-close" data-bs-dismiss="offcanvas" class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"role="button"  (click)="mostrarLibrosPorId(11)">Filosofía y psicología</a></p>
+                            <p><a class="btn-close" data-bs-dismiss="offcanvas" class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"role="button"  (click)="mostrarLibrosPorId(12)">Inglés</a></p>
+                            <p><a class="btn-close" data-bs-dismiss="offcanvas" class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"role="button"  (click)="mostrarLibrosPorId(13)">Educación física</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <section class="catalogo" id="top-page">
+                <div class="pt-1 my-2 text-center border-bottom" > 
+                    <br>
+                    
+                    <h1 class="display-4 fw-bold text-body-emphasis">Catálogo</h1>
+                    <span class='arrowRight'>
+                        <div class="b-example-divider"></div>
+                    <button class="search-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+                        <i class="fa fa-search"></i>
+                    </button>
+                    </span>
+                    
+                </div>
+            </section>
+        
+        <div class="row" id="homee">
+            <div class="col" *ngFor="let libro of filteredLibros">
+                <div class="card card-small h-100">
+                    <img [src]="libro.image" [alt]="libro.titulo" class="card-img-top object-fit-cover">
+                    <div class="card-body">
+                        <h5 class="card-title">{{libro.titulo}}</h5>
+                        <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#modalLibro" (click)="verMas(libro)">Ver más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="btn-top" title="Volver arriba" (click)="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
+        
+
+<!-- Modal -->
+<div class="modal fade" id="#modalLibro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modalLibroLabel">{{selectedLibro?.titulo}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="img">
+                    <img [src]="selectedLibro?.image" [alt]="selectedLibro?.titulo" class="img-fluid mb-3">
+                </div>
+                <div class="modal-cuerpo">
+                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Dewey:</strong> {{selectedLibro?.dewey}}</p>
+                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Autor:</strong> {{selectedLibro?.nombre_autor}}</p>
+                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Titulo:</strong> {{selectedLibro?.titulo}}</p>
+                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Area de publicación:</strong> {{selectedLibro?.lugares}}, {{selectedLibro?.editorial}}, {{selectedLibro?.fecha_edicion}}</p>
+                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Edicion:</strong> {{selectedLibro?.edicion}}</p>
+                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Descripción:</strong> {{selectedLibro?.paginas}}</p>
+                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Tema-materia:</strong> {{selectedLibro?.referencias}}</p>
+                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Idioma:</strong> {{selectedLibro?.idiomas}}</p>
+                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Resumen:</strong> {{selectedLibro?.contenido}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    </div>
+</div>
+        
+        
+        
+        
+            <div class="modal fade" id="modalLibro" tabindex="-1" aria-labelledby="modalLibroLabel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                <div class="modal-content container-fluid">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="modalLibroLabel">{{selectedLibro?.titulo}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid modal-body">
+                            <div class="img">
+                                <img [src]="selectedLibro?.image" [alt]="selectedLibro?.titulo" class="img-fluid mb-3">
+                            </div>
+                            <div class="modal-cuerpo">
+                                <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Dewey:</strong> {{selectedLibro?.dewey}}</p>
+                                <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Autor:</strong> {{selectedLibro?.nombre_autor}}</p>
+                                <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Titulo:</strong> {{selectedLibro?.titulo}}</p>
+                                <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Area de publicación:</strong> {{selectedLibro?.lugares}}, {{selectedLibro?.editorial}}, {{selectedLibro?.fecha_edicion}}</p>
+                                <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Edicion:</strong> {{selectedLibro?.edicion}}</p>
+                                <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Descripción:</strong> {{selectedLibro?.paginas}}</p>
+                                <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Tema-materia:</strong> {{selectedLibro?.referencias}}</p>
+                                <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Idioma:</strong> {{selectedLibro?.idiomas}}</p>
+                                <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Resumen:</strong> {{selectedLibro?.contenido}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+</section>
+
+
+
+
+
+
+
+    
+
