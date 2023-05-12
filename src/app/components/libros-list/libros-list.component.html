@@ -67,42 +67,6 @@
         </div>
         <button id="btn-top" title="Volver arriba" (click)="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
         
-
-<!-- Modal -->
-<div class="modal fade" id="#modalLibro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="modalLibroLabel">{{selectedLibro?.titulo}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-            <div class="container-fluid">
-                <div class="img">
-                    <img [src]="selectedLibro?.image" [alt]="selectedLibro?.titulo" class="img-fluid mb-3">
-                </div>
-                <div class="modal-cuerpo">
-                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Dewey:</strong> {{selectedLibro?.dewey}}</p>
-                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Autor:</strong> {{selectedLibro?.nombre_autor}}</p>
-                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Titulo:</strong> {{selectedLibro?.titulo}}</p>
-                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Area de publicación:</strong> {{selectedLibro?.lugares}}, {{selectedLibro?.editorial}}, {{selectedLibro?.fecha_edicion}}</p>
-                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Edicion:</strong> {{selectedLibro?.edicion}}</p>
-                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Descripción:</strong> {{selectedLibro?.paginas}}</p>
-                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Tema-materia:</strong> {{selectedLibro?.referencias}}</p>
-                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Idioma:</strong> {{selectedLibro?.idiomas}}</p>
-                    <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Resumen:</strong> {{selectedLibro?.contenido}}</p>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-    </div>
-    </div>
-</div>
-        
         
         
         
@@ -119,6 +83,7 @@
                                 <img [src]="selectedLibro?.image" [alt]="selectedLibro?.titulo" class="img-fluid mb-3">
                             </div>
                             <div class="modal-cuerpo">
+                                <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Ejemplares:</strong> {{selectedLibro?.unidades}}</p>
                                 <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Dewey:</strong> {{selectedLibro?.dewey}}</p>
                                 <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Autor:</strong> {{selectedLibro?.nombre_autor}}</p>
                                 <p style="margin:1% 0; font-family: Arial, sans-serif; font-size: 12px; font-weight: normal;"><strong>Titulo:</strong> {{selectedLibro?.titulo}}</p>

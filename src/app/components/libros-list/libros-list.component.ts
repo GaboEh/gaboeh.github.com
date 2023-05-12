@@ -72,7 +72,7 @@ mostrarLibrosPorId(id: number): void {
     if (libro.idappedagogica !== id) {
       return false;
     }
-    const tituloEditorial = libro.titulo + libro.editorial;
+    const tituloEditorial = libro.titulo + libro.editorial + libro.image;
     if (librosMostrados[tituloEditorial]) {
       return false;
     }
@@ -80,7 +80,8 @@ mostrarLibrosPorId(id: number): void {
     const busqueda = this.filtroTitulo.toLowerCase().trim();
     return (
       libro.titulo?.toLowerCase().includes(busqueda) ||
-      libro.editorial?.toLowerCase().includes(busqueda)
+      libro.editorial?.toLowerCase().includes(busqueda) ||
+      libro.image?.toLowerCase().includes(busqueda)
     );
   });
 }
@@ -101,7 +102,7 @@ mostrarLibrosPorTituloYEditorial(libros: Libro[], buscarLibros: boolean = true) 
   const librosMostrados: { [titulo: string]: Libro } = {};
 
   libros.forEach((libro) => {
-    const tituloEditorial = `${libro.titulo}-${libro.editorial}`;
+    const tituloEditorial = `${libro.titulo}-${libro.editorial}-${libro.image}`;
     if (!librosMostrados[tituloEditorial]) {
       librosMostrados[tituloEditorial] = libro;
     }
@@ -116,7 +117,7 @@ mostrarLibrosPorTituloYEditorial(libros: Libro[], buscarLibros: boolean = true) 
 buscarLibros() {
   const librosMostrados: LibrosAgrupados = {};
   this.filteredLibros = this.libros.filter((libro: Libro) => {
-      const tituloEditorial = libro.titulo + libro.editorial;
+      const tituloEditorial = libro.titulo + libro.editorial + libro.image;
       if (librosMostrados[tituloEditorial]) {
           return false;
       }
@@ -154,11 +155,13 @@ reemplazarLugares(selectedLibro: {
   sn: string,
   sa: string,
   sl: string,
+  unidades: number
   tipos: string | undefined}, paises: string) {
   
   const sn: string = 's.n';
   const sl: string  = 's.l';
   const sa: string  = 's.a';
+  const autor: string = '';
   
   if (selectedLibro.lugares === '_NINGUNO') {
     selectedLibro.lugares = selectedLibro.paises || sl;
@@ -171,14 +174,30 @@ reemplazarLugares(selectedLibro: {
   if (selectedLibro.fecha_edicion === '_NINGUNO') {
     selectedLibro.fecha_edicion = sa;
   }
+
+  if (selectedLibro.nombre_autor === '_NINGUNO'){
+    selectedLibro.nombre_autor = autor;
+  }
+
+  
   
   return selectedLibro;
-}
+} 
 
 verMas(libro: Libro): void {
+  const filteredLibros = this.libros.filter((l: { titulo: string; editorial: string; edicion: string; image: string;}) => l.titulo === libro.titulo && l.editorial === libro.editorial &&(l.edicion === libro.edicion || l.image === libro.image));
+
+const tituloEditorial = `${libro.titulo}-${libro.editorial}`;
+
+const librosContados = this.contarLibrosPorTituloYEditorial(filteredLibros);
+
+libro.unidades = librosContados[`${tituloEditorial}-${libro.edicion}`] || librosContados[`${tituloEditorial}-${libro.image}`];
+
   this.selectedLibro = libro;
   const temaMateria = this.selectedLibro?.tipos;
   let abreviatura = "";
+  const dewey = this.selectedLibro?.dewey;
+  this.selectedLibro.dewey = abreviatura + dewey;
 
   if (temaMateria?.includes("Literatura Chilena") || temaMateria?.includes("Novelas Chilenas") || temaMateria?.includes("Cuentos Chilenos") || temaMateria?.includes("Poesías Chilenas") || temaMateria?.includes("Teatro Chileno") || temaMateria?.includes("Ensayos Chilenos") || temaMateria?.includes("Cartas Chilenas") || temaMateria?.includes("Sátiras Chilenas") || temaMateria?.includes("Humorismo Chileno") || temaMateria?.includes("Misceláneas Chilenas")) {
     abreviatura = "CH ";
@@ -210,17 +229,14 @@ verMas(libro: Libro): void {
     abreviatura = "H ";
   }
 
-  const dewey = this.selectedLibro?.dewey;
-  this.selectedLibro.dewey = abreviatura + dewey;
-
-  if (this.selectedLibro?.lugares === '_NINGUNO' || this.selectedLibro?.editorial === '_NINGUNO' || this.selectedLibro?.fecha_edicion === '_NINGUNO') {
+  if (this.selectedLibro?.lugares === '_NINGUNO' || this.selectedLibro?.editorial === '_NINGUNO' || this.selectedLibro?.fecha_edicion === '_NINGUNO' || this.selectedLibro?.nombre_autor === '_NINGUNO') {
     this.selectedLibro = this.reemplazarLugares({ 
       lugares: this.selectedLibro.lugares, 
       paises: this.selectedLibro.paises, 
       autor: this.selectedLibro.autor, 
       editor: this.selectedLibro.editor, 
       lugar: this.selectedLibro.lugar, 
-      nombre_autor: this.selectedLibro.nombre_autor, 
+      nombre_autor: this.selectedLibro.nombre_autor || '', 
       editorial: this.selectedLibro.editorial,
       pais: this.selectedLibro.pais,
       fecha_edicion: this.selectedLibro.fecha_edicion,
@@ -237,17 +253,65 @@ verMas(libro: Libro): void {
       sn: this.selectedLibro.sn || 's.n',
       sl: this.selectedLibro.sl || 's.l',
       sa: this.selectedLibro.sa || 's.a',
+      unidades: this.selectedLibro.unidades
     }, 
     this.selectedLibro?.paises);
   }
 }
 
+contarLibrosPorTituloYEditorial(libros: Libro[]): { [tituloEditorial: string]: number } {
+  const librosContados: { [tituloEditorial: string]: number } = {};
 
+  libros.forEach((libro) => {
 
+    const librosConMismoTituloYEditorial = libros.filter((otroLibro) => {
+      return (
+        libro.titulo === otroLibro.titulo &&
+        libro.editorial === otroLibro.editorial &&
+        libro.edicion !== otroLibro.edicion &&
+        libro.image !== otroLibro.image
+      );
+    });
 
+    const librosConMismoTituloYEdicion = libros.filter((otroLibro) => {
+      return (
+        libro.titulo === otroLibro.titulo &&
+        libro.editorial === otroLibro.editorial &&
+        libro.edicion !== otroLibro.edicion &&
+        libro.image === otroLibro.image
+      );
+    });
 
+    const librosConTodoIgual = libros.filter((otroLibro) => {
+      return (
+        libro.titulo === otroLibro.titulo &&
+        libro.editorial === otroLibro.editorial &&
+        libro.edicion === otroLibro.edicion &&
+        libro.image === otroLibro.image
+      );
+    });
+
+    if (librosConMismoTituloYEditorial.length > 0) {
+      const tituloEditorialImagen = `${libro.titulo}-${libro.editorial}-${libro.image}`;
+      if (!librosContados[tituloEditorialImagen]) {
+        librosContados[tituloEditorialImagen] = librosConMismoTituloYEditorial.length;
+      }
+    } else if (librosConMismoTituloYEdicion.length > 0) {
+      const tituloEditorialEdicion = `${libro.titulo}-${libro.editorial}-${libro.edicion}`;
+      if (!librosContados[tituloEditorialEdicion]) {
+        librosContados[tituloEditorialEdicion] = librosConMismoTituloYEdicion.length;
+      }
+    } else if (librosConTodoIgual.length > 0) {
+      const tituloEditorialTodo = `${libro.titulo}-${libro.editorial}-${libro.edicion}`;
+      if (!librosContados[tituloEditorialTodo]) {
+        librosContados[tituloEditorialTodo] = librosConTodoIgual.length;
+      }
+    }
+  });
+
+  return librosContados;
+}
 
 
 }
-
 

@@ -29,4 +29,5 @@ export interface Libro {
     sa: string;
     abreviaturaDewey?: string;
     tipos?: string;
+    unidades: number;
 }
