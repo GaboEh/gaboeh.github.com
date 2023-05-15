@@ -56,11 +56,11 @@
         
         <div class="row" id="homee">
             <div class="col" *ngFor="let libro of filteredLibros">
-                <div class="card card-small h-100">
+                <div class="card card-small h-100" style="margin-top: 3.5rem;
+                margin-bottom: 3.5rem;">
                     <img [src]="libro.image" [alt]="libro.titulo" class="card-img-top object-fit-cover">
                     <div class="card-body">
-                        <h5 class="card-title">{{libro.titulo}}</h5>
-                        <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#modalLibro" (click)="verMas(libro)">Ver más</a>
+                        <a href="#" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalLibro" (click)="verMas(libro)">Ver más</a>
                     </div>
                 </div>
             </div>
