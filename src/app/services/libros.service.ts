@@ -11,7 +11,7 @@ export class LibrosService {
 
   
 
-  API_URI = 'https://sore-cyan-adder-vest.cyclic.app/libros';
+  API_URI = 'https://railway-production-6d4e.up.railway.app/libros';
 
   constructor(private http: HttpClient) { }
 
