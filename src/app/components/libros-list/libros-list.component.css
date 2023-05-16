@@ -82,7 +82,8 @@ body{
 }
 
 .card-small a:hover {
-    background-color: #0069d9;
+    background-color: #ffffff;
+    color: #212529;
 }
 
 .card {
