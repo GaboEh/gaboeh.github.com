@@ -6,22 +6,23 @@ import { LibrosHomeComponent } from './components/libros-home/libros-home.compon
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/libros',
-    pathMatch: 'full'
-  },
-  {
-    path: 'libros',
-    component: LibrosListComponent
-  },
-  {
-    path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   },
   {
     path: 'home',
     component: LibrosHomeComponent
+  },
+  {
+    path: '',
+    redirectTo: '/libros',
+    pathMatch: 'full'
+  },
+  {
+    path: 'libros',
+    component: LibrosListComponent
   }
+
 ];
 
 @NgModule({
