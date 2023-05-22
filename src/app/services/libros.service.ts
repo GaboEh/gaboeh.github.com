@@ -11,7 +11,7 @@ export class LibrosService {
 
   
 
-  API_URI = 'https://railway-production-6d4e.up.railway.app/libros';
+  API_URI = 'https://blushing-gold-wrap.cyclic.app/libros';
 
   constructor(private http: HttpClient) { }
 
